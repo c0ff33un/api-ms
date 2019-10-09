@@ -1,0 +1,18 @@
+version: '2.1'
+services:
+  sa-api:
+    build: .
+    environment:
+      PORT: '5000'
+      SHOW_URLS: 'true'
+      AUTH_URL: 'sa-auth-ms'
+      AUTH_PORT: '4000'
+      AUTH_USERS_ENTRY: 'sa-auth-ms/resources/users'
+    ports:
+      - '5000:5000'
+    networks:
+      - lab3_default
+
+networks:
+  lab3_default:
+    external: true
