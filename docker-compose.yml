@@ -1,18 +1,22 @@
 version: '2.1'
 services:
-  sa-api:
+  taurus-api:
     build: .
     environment:
       PORT: '5000'
       SHOW_URLS: 'true'
-      AUTH_URL: 'sa-auth-ms'
-      AUTH_PORT: '4000'
-      AUTH_USERS_ENTRY: 'sa-auth-ms/resources/users'
+      AUTH_URL:  taurus-auth-ms
+      DATA_URL:  taurus-data-store-ms
+      MATCH_URL: taurus-matchmaking-ms
+      GRID_URL:  taurus-grid-gen-ms
+      GAME_URL:  game-server
+      AUTH_USERS_ENTRY: 'taurus-auth-ms/resources/users'
     ports:
       - '5000:5000'
     networks:
-      - lab3_default
+      - taurus-network
 
 networks:
-  lab3_default:
-    external: true
+  taurus-network:
+    name: taurus-network
+    driver: bridge

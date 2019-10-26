@@ -1,3 +1,10 @@
-export const url = 'localhost'
-export const port = '3000'
-//export const entryPoint = 'users'
+export const auth_url = process.env.AUTH_URL
+export const data_url = process.env.DATA_URL    
+export const match_url = process.env.MATCH_URL  
+export const game_url = process.env.GAME_URL
+export const grid_url = process.env.GRID_URL
+export const auth_port = '3000'
+export const data_port = '4000'
+export const match_port = '6000'
+export const grid_port = '8080'
+export const game_port = '8888'

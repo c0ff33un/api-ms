@@ -1,6 +1,5 @@
 import request from 'request-promise-native';
 import { formatError } from 'graphql';
-
 /**
  * Creates a request following the given parameters
  * @param {string} url
@@ -9,13 +8,14 @@ import { formatError } from 'graphql';
  * @param {boolean} [fullResponse]
  * @return {Promise.<*>} - promise with the error or the response object
  */
-export async function generalRequest(url, method, body, fullResponse) {
+export async function generalRequest(url, method, body, fullResponse, headers) {
 	const parameters = {
 		method,
 		uri: encodeURI(url),
 		body,
 		json: true,
-		resolveWithFullResponse: fullResponse
+		resolveWithFullResponse: fullResponse,
+		headers,		
 	};
 	if (process.env.SHOW_URLS) {
 		// eslint-disable-next-line
