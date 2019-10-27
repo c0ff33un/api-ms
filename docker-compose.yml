@@ -9,7 +9,7 @@ services:
       DATA_URL:  taurus-data-store-ms
       MATCH_URL: taurus-matchmaking-ms
       GRID_URL:  taurus-grid-gen-ms
-      GAME_URL:  game-server
+      GAME_URL:  ec2-3-231-146-168.compute-1.amazonaws.com/gs
       AUTH_USERS_ENTRY: 'taurus-auth-ms/resources/users'
     ports:
       - '5000:5000'
