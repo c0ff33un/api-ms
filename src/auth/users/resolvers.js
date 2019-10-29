@@ -2,12 +2,11 @@ import { generalRequest, getRequest } from '../../utilities';
 import { auth_url, data_url, match_url, game_url, grid_url, auth_port, data_port, grid_port, game_port, match_port} from './server';
 import request from 'request-promise-native';
 
-const AUTH_URL = `http://${auth_url}:${auth_port}`;
-const DATA_URL = `http://${data_url}:${data_port}`;
-const MATCH_URL = `http://${match_url}:${match_port}`;
-const GRID_URL = `http://${grid_url}:${grid_port}`;
+const AUTH_URL = `http://${auth_url}`;
+const DATA_URL = `http://${data_url}`;
+const MATCH_URL = `http://${match_url}`;
+const GRID_URL = `http://${grid_url}`;
 const GAME_URL = `http://${game_url}`;
-// const GAME_URL = `http://localhost:${game_port}`;
 
 const resolvers = {
 	Query: {
