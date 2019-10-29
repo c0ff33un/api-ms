@@ -1,12 +1,12 @@
 import { generalRequest, getRequest } from '../../utilities';
-import { auth_url, data_url, match_url, game_url, grid_url, auth_port, data_port, grid_port, game_port, match_port} from './server';
+import { auth_url, data_url, match_url, game_url, grid_url} from './server';
 import request from 'request-promise-native';
 
-const AUTH_URL = `http://${auth_url}`;
-const DATA_URL = `http://${data_url}`;
-const MATCH_URL = `http://${match_url}`;
-const GRID_URL = `http://${grid_url}`;
-const GAME_URL = `http://${game_url}`;
+const AUTH_URL = `http://${process.env.AUTH_URL}`;
+const DATA_URL = `http://${process.env.DATA_URL}`;
+const MATCH_URL = `http://${process.env.MATCH_URL}`;
+const GRID_URL = `http://${process.env.GRID_URL}`;
+const GAME_URL = `http://${process.env.GAME_URL}`;
 
 const resolvers = {
 	Query: {
@@ -15,7 +15,7 @@ const resolvers = {
 		user: (root,args,context) => 
 			generalRequest(`${AUTH_URL}/user`,'GET',{},true,{"Authorization": `Bearer ${context.token}`})
 				.then(res => {
-					console.log(res)
+					console.log(res, AUTH_URL)
 
 					if(res.statusCode != 200 || res.statusCode == 201){
 						return new Error(res.message)
@@ -57,7 +57,8 @@ const resolvers = {
 		login: (_, { user }) => 
 			generalRequest(`${AUTH_URL}/login`, 'POST', { user }, true)
 				.then(res => {
-					console.log("@@@@@@@@@@@@@@@@@@\n",res.statusCode,res.error,res.body,"@@@@@@@@@@@@@@@@@@\n")
+					console.log("@@@@@@@@@@@@@@@@@@\n",res.statusCode,res.error,res.body,"@@@@@@@@@@@@@@@@@@\n", AUTH_URL)
+
 					if(res.statusCode != 201){
 						return new Error(res.message)
 					}
